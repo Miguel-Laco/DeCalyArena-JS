@@ -1,0 +1,72 @@
+/*Aplico un formato a todo el contenido del header */
+header {
+    background-color: white;
+    margin-top: 15px;
+}
+
+.header-logo {
+    cursor: pointer;
+    /*cambia el puntero por una mano*/
+    height: 110px;
+    }
+
+.header-carrito {
+    cursor: pointer;
+    height: 50px;
+}
+
+.header-nav {
+    align-items: center;
+    justify-content: space-around;
+
+
+&-lista {
+    padding-top: 50%;
+    box-shadow: 0 0 6px black;
+}
+}
+
+.header-menu {
+    text-decoration: none;
+    color: red;
+    font-size: 35px;
+
+    &-logo {
+        width: 50px;
+    }
+}
+
+.header-nav-link {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    margin-top: 20px;
+
+    & a {
+        color: black;
+    }
+}
+
+#menu {
+    display: block;
+    background-color: white;
+    width: 80%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 100;
+    transition: right 2s;
+}
+
+#menu:target {
+    right: 0%;
+}
+
+.header-img-close {
+    width: 30px;
+}
+
+
+
+
