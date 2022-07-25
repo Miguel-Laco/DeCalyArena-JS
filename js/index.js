@@ -88,31 +88,67 @@ formulario.addEventListener("submit", validarFormulario);
 //creo esta funcion para guardar los datos del resgistro en un arreglo
 function validarFormulario(e) {
     e.preventDefault() //Evito que se recargue el formulario
-    let nombre = e.target.children[0].children[1].value; //cargo en una variable el valor del formulario
-    let email = e.target.children[1].children[1].value;
-    let clave = e.target.children[2].children[1].value;
-    const usuario = new Usuario(nombre, email, clave);
-    usuarios.push(usuario) // llevos los datos de usuario al arreglo "usuarios"
-    esconderRegistro()
-    mostrarLogin()
-    console.log(usuario);
+    //valido que el formulario no este vacio
+    if (!e.target.children[0].children[1].value || !e.target.children[2].children[1].value || !e.target.children[1].children[1].value) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor complete todos los campos',
+        })
+    }else {
+        let nombre = e.target.children[0].children[1].value; //cargo en una variable el valor del formulario
+        let email = e.target.children[1].children[1].value;
+        let clave = e.target.children[2].children[1].value;
+        const usuario = new Usuario(nombre, email, clave);
+        //Guardo el usuario generado utilizando JSON stringify, para que mantenga el formato.
+        sessionStorage.setItem(`${email}`, JSON.stringify(usuario));
+        //escondo el formulario de registro
+        esconderRegistro()
+        //muetro el formulario de login
+        mostrarLogin()
+        //Dejo un log del usuario generado, para ayudar con el login y las pruebas durante el proyecto
+        console.log(usuario);
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `<b>${nombre}</b>, registramos tus datos a la cuenta ${email}`,
+            showConfirmButton: false,
+            timer: 5000
+        })
+    }
 }
 //agrego un "listener" que espera la entrada del formulario de Login
 let formularioLogin = document.getElementById("formLogin");
 formularioLogin.addEventListener("submit", validarFormularioLogin);
 
-//creo esta funcion para validar que los datos del usuario, coincidan con los del registro
+//Hago la validacion del login, utilizando JSON del arreglo almacenado.
 function validarFormularioLogin(e) {
-    e.preventDefault() //Evito que se recargue el formulario
-    //Si está correcto, hago el span de la tarjeta de usuario
-    if ((usuarios[0].nombre === e.target.children[0].children[1].value) && (usuarios[0].clave === e.target.children[1].children[1].value)) {
-        const mensaje = document.getElementById("tarjetaSpan"); // busco el ID a modificar
-        mensaje.innerHTML = `<div id="tarjeta" class="card text-center text-bg-light mx-auto" style="width: 13rem;">
+    e.preventDefault();
+    //valido que el formulario no este vacio
+    if (!e.target.children[0].children[1].value || !e.target.children[2].children[1].value || !e.target.children[1].children[1].value) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor complete todos los campos',
+        })
+    } else {
+        //valido que el correo ingresado sea una cuenta registrada
+        let usuarioStorage = JSON.parse(sessionStorage.getItem(`${e.target.children[1].children[1].value}`));
+        if (!usuarioStorage) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${e.target.children[1].children[1].value}, no se encuentra registrado`,
+            })
+        } else { //si esta registrada, valido con los datos coincidan con los que estan almacenados
+            if (usuarioStorage.nombre === e.target.children[0].children[1].value && usuarioStorage.clave === e.target.children[2].children[1].value && usuarioStorage.email === e.target.children[1].children[1].value) {
+                //si los datos coinciden, genero la tarjeta de usuario y lo dejo pasar
+                const mensaje = document.getElementById("tarjetaSpan"); // busco el ID a modificar
+                mensaje.innerHTML = `<div id="tarjeta" class="card text-center text-bg-light mx-auto" style="width: 13rem;">
                                     <img src="./img/user.png" class="card-img-top align-self-center mt-3" alt="foto usuario" style="width: 3rem;">
-
-                                    <h4 class="card-header">${usuarios[0].nombre}</h4>
+                                    <h4 class="card-header">${usuarioStorage.nombre}</h4>
                                     <h6 class="card-title">Bienvenido</h6>
-                                    <p class="card-text">Te enviamos un correo a <b>${usuarios[0].email}</b>, para validar tu registro</p>
+                                    <p class="card-text">Te enviamos un correo a <b>${usuarioStorage.email}</b>, para validar tu registro</p>
                                     <div id="perfiles">
                                     <button id="botonAzul" type="button" class="btn btn-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .25rem;"></button>
                                     <button id="botonGris" type="button" class="btn btn-secondary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .25rem;"></button>
@@ -122,21 +158,23 @@ function validarFormularioLogin(e) {
                                     <button id="botonTurquesa" type="button" class="btn btn-info" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .25rem;"></button>
                                     </div>
                             </div>`;
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Ya podes realizar tu pedido!',
-            showConfirmButton: false,
-            timer: 1500
-        })
-        esconderLogin();
-        customize();
-    } else {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Los datos ingresados son incorrectos',
-        })
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: `<b>${usuarioStorage.nombre}</b>, ya podes realizar tu pedido!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                esconderLogin();
+                customize();
+            } else { //si no coinciden, le aviso que algun dato no coincide con el correo registrado
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `los datos ingresados, no coinciden con los que tenemos registrados en ${e.target.children[1].children[1].value}`,
+                })
+            }
+        }
     }
 }
 
@@ -318,6 +356,7 @@ function asistente() {
                     'Los materiales ya están en tu carrito',
                     'success'
                 )
+                console.log(carrito);
             } else if (
                 result.dismiss === Swal.DismissReason.cancel
             ) {
@@ -336,5 +375,5 @@ function asistente() {
     } else {
         Swal.fire('Debes ingresar las medidas de tu muro y el tipo de ladrillo, para que podamos ayudarte con tu proyecto')
     }
-    console.log(carrito);
+    
 }
