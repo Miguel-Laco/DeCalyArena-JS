@@ -65,6 +65,11 @@ function esconderRegistro() {
     const cambio = document.getElementById("formRegistro")
     cambio.classList.add('d-none');
 }
+//Funcion para mostrar el formulario de Registro
+function mostrarRegistro() {
+    const cambio = document.getElementById("formRegistro")
+    cambio.classList.remove('d-none');
+}
 
 //Funcion para esconder el formulario de Login
 function esconderLogin() {
@@ -78,8 +83,11 @@ function mostrarLogin() {
     cambio.classList.remove('d-none')
 }
 
-
-
+//Funcion para mostrar el contenido de la pagina
+function mostrarPrincipal() {
+    const cambio = document.getElementById("seccion-Principal")
+    cambio.classList.remove('d-none')
+}
 
 //agrego un "listener" que espera la entrada del formulario de registro
 let formulario = document.getElementById("formRegistro");
@@ -95,7 +103,7 @@ function validarFormulario(e) {
             title: 'Oops...',
             text: 'Por favor complete todos los campos',
         })
-    }else {
+    } else {
         let nombre = e.target.children[0].children[1].value; //cargo en una variable el valor del formulario
         let email = e.target.children[1].children[1].value;
         let clave = e.target.children[2].children[1].value;
@@ -128,8 +136,7 @@ function validarFormularioLogin(e) {
     if (!e.target.children[0].children[1].value || !e.target.children[2].children[1].value || !e.target.children[1].children[1].value) {
         Swal.fire({
             icon: 'error',
-            title: 'Oops...',
-            text: 'Por favor complete todos los campos',
+            title: 'Por favor complete todos los campos',
         })
     } else {
         //valido que el correo ingresado sea una cuenta registrada
@@ -167,6 +174,7 @@ function validarFormularioLogin(e) {
                 })
                 esconderLogin();
                 customize();
+                mostrarPrincipal()
             } else { //si no coinciden, le aviso que algun dato no coincide con el correo registrado
                 Swal.fire({
                     icon: 'error',
@@ -375,5 +383,24 @@ function asistente() {
     } else {
         Swal.fire('Debes ingresar las medidas de tu muro y el tipo de ladrillo, para que podamos ayudarte con tu proyecto')
     }
-    
+
 }
+
+//Portal de ingreso a la pagina
+Swal.fire({
+    imageUrl: './img/deCalyArena-03.png',
+    showDenyButton: true,
+    showCancelButton: false,
+    allowOutsideClick: false,
+    confirmButtonText: 'Registrarse',
+    denyButtonText: `Ingresar`,
+}).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+        console.log("abrir Registro");
+        mostrarRegistro();
+    } else if (result.isDenied) {
+        console.log("abrir Login");
+        mostrarLogin();
+    }
+})
