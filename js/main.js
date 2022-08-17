@@ -46,6 +46,7 @@ export function mostrarLogin() {
 //Agrego el llamado al carrousel "Splide"
 const splide = new Splide('.splide', {
     type: 'loop',
+    autoWidth: true,
     perPage: 3,
     autoScroll: {
         speed: 2,
