@@ -1,0 +1,8 @@
+[
+    {"id": 1, "nombre": "Arena", "cantidad": "1", "descripcion": "Arena x m3", "precio": 5000, "img": "./img/materiales/arena.png" },
+    {"id": 2, "nombre": "Cal", "cantidad": "1", "descripcion": "Cal Milagro x 25Kg", "precio": 1573, "img": "./img/materiales/cal.png" },
+    {"id": 3, "nombre": "Cemento", "cantidad": "1", "descripcion": "Cemento Avellaneda x 50Kg", "precio": 1202, "img": "./img/materiales/cemento.png" },
+    {"id": 4, "nombre": "Ladrillo Comun", "cantidad": "1", "descripcion": "Ladrillo Comun 5.5x18x25", "precio": 35, "img": "./img/materiales/ladrillo-comun.png" },
+    {"id": 5, "nombre": "Ladrillo Hueco", "cantidad": "1", "descripcion": "Ladrillo Hueco 12x18x33", "precio": 98, "img": "./img/materiales/ladrillo-hueco12.png" },
+    {"id": 6, "nombre": "Bloque Hormigon", "cantidad": "1", "descripcion": "Bloque Liso 19x19x39", "precio": 200, "img": "./img/materiales/ladrillo-bloque.png" }
+]

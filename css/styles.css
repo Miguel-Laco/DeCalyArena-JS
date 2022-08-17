@@ -123,4 +123,51 @@ header {
 .productos img {
   height: 220px;
 }
+
+.basura {
+  height: 20px;
+}
+
+.carrito-logo {
+  height: 50px;
+}
+
+.modal-header {
+  display: flex;
+}
+
+.modal-title {
+  flex: auto;
+  text-align: center;
+}
+
+.footer {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10px;
+  background-color: black;
+}
+
+.footer-logo {
+  cursor: pointer;
+  /*cambia el puntero por una mano*/
+  height: 70px;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-firma {
+  padding: 0;
+  margin: 0;
+  height: 20px;
+}
+
+.footer-firma-imagen {
+  padding: 0;
+}
 /*# sourceMappingURL=styles.css.map */
