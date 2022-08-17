@@ -93,7 +93,7 @@ const actualizarCarrito = () => {
     contadorCarrito.innerText = carrito.length;
     //Modifico el precio total
     const precioTotal = document.getElementById("precioTotal");
-    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.precio * prod.cantidad, 0)
+    precioTotal.innerText = separador (carrito.reduce((acc, prod) => acc + prod.precio * prod.cantidad, 0))
     //Almaceno el carrito y uso como clave el correo del usuario, para recuperar productos
     localStorage.setItem(localStorage.userCarrito, JSON.stringify(carrito))
 }
@@ -104,6 +104,13 @@ botonVaciar.addEventListener(`click`, () => {
     carrito.length = 0 //dejo en 0 la longitud del carrito
     actualizarCarrito(); //refresco el carrito para mostrar cambios
 })
+
+//Si el valor es mayor a 1000, agrego un punto(.)
+const separador = (numb) => {
+    let str = numb.toString().split(".");
+    str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return str.join(".");
+};
 
 
 //Simulación de Pago
