@@ -135,19 +135,19 @@ function asistente() {
     let superficie = (ancho * alto);
     // Calculo de CEMENTO (11,88Kg x m2)
     function calcularCemento(parametro) {
-        return parametro * 11, 88;
+        return (parametro * 11.88).toFixed(0);
     }
     // Almaceno en una variable, la cantidad de cemento en Kg, según la supercifie calculada anteriormente.
     let resultadoCemento = calcularCemento(superficie);
     // Calculo de Cal (22,92Kg x m2)
     function calcularCal(parametro) {
-        return parametro * 22, 92;
+        return (parametro * 22.92).toFixed(0);
     }
     // Almaceno en una variable, la cantidad de Arena en Kg, según la supercifie calculada anteriormente.
     let resultadoCal = calcularCal(superficie);
     // Calculo de ARENA (3m3 x m2)
     function calcularArena(parametro) {
-        return parametro * 3;
+        return (parametro * 0.108).toFixed(0);
     }
     // Almaceno la cantidad de arena en una variable, según la superficie calculada
     let resultadoArena = calcularArena(superficie);
