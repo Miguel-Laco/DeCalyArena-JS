@@ -43,7 +43,7 @@ export function mostrarLogin() {
     cambio.classList.remove('d-none');
 }
 
-//Agrego el llamado al carrousel
+//Agrego el llamado al carrousel "Splide"
 const splide = new Splide('.splide', {
     type: 'loop',
     perPage: 3,
@@ -52,5 +52,4 @@ const splide = new Splide('.splide', {
         pauseOnHover: false,
     }
 });
-
 splide.mount(window.splide.Extensions);
