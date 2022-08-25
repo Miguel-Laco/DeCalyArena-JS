@@ -145,9 +145,13 @@ function asistente() {
     }
     // Almaceno en una variable, la cantidad de Arena en Kg, según la supercifie calculada anteriormente.
     let resultadoCal = calcularCal(superficie);
-    // Calculo de ARENA (3m3 x m2)
+    // Calculo de ARENA (0.108 x m2)
     function calcularArena(parametro) {
-        return (parametro * 0.108).toFixed(0);
+        if ((parametro * 0.108).toFixed(0) < 1) {
+            return 0.50  //evito el 0 en el carrito
+        } else {
+            return (parametro * 0.108).toFixed(0);
+        }
     }
     // Almaceno la cantidad de arena en una variable, según la superficie calculada
     let resultadoArena = calcularArena(superficie);
