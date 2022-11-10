@@ -2,7 +2,7 @@
 <!-- PROJECT LOGO -->
 <div align="center">
   <a href="https://github.com/Miguel-Laco/DeCalyArena-JS">
-    <img src="./img/deCalyAreba-05.png" alt="Logo" width="380" height="180">
+    <img src="./img/deCalyArena-03.png" alt="Logo">
   </a>
 
   <p align="center">
@@ -77,8 +77,10 @@ E-commerce app, developed by me, for the final project of JavaScript course.
 <!-- * [![Laravel][Laravel.com]][Laravel-url] -->
 <!-- * [![JQuery][JQuery.com]][JQuery-url] -->
 <!-- * [![React][React.js]][React-url] -->
+* ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+* ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+* ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![HTML5][HTML5.com]][Bootstrap-url]
 <!-- * [![Hot][Hot.com]][Hot-url] -->
 <!-- * [![Fire][Fire.com]][Fire-url] -->
 <!-- * [![Moment][Moment.com]][Moment-url] -->
@@ -98,7 +100,7 @@ To get a local copy up and running follow these simple example steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/Miguel-Laco/cosecha40-laco.git
+   git clone https://github.com/Miguel-Laco/DeCalyArena-JS.git
    ```
 3. Install NPM packages
    ```sh
@@ -122,11 +124,6 @@ Miguel Horacio Laco Salaverría -
 </p>
 
 
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* ### Professor [ Juan Magos ](https://github.com/JuanMagos)
-* ### Tutor [ Danae Meneses ](https://github.com/danaemeneses)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -165,5 +162,3 @@ Miguel Horacio Laco Salaverría -
 [Fire-url]: https://firebase.google.com/
 [Moment.com]: https://img.shields.io/badge/Moment-blue?style=for-the-badge&logo=Cachet&logoColor=white
 [Moment-url]: https://momentjs.com/
-[HTML5]: https://img.shields.io/badge/HTML?style=for-the-badge&logo=HTML5&logoColor=E34F26
-
